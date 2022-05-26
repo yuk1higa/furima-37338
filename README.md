@@ -1,24 +1,56 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Users table
+| Column           | Type                  | Options                             |
+|------------------|-----------------------|-------------------------------------|
+| nickname         | string                | null:false                          |
+| email            | string                | null:false, unique :true            |
+| password         | string                | null:false                          |
+| zenkaku_name     | string                | null:false                          |
+| kana_name        | string                | null:false                          |
+| birthday         | integer               | null:false                          |
 
-Things you may want to cover:
+### Asociation
 
-* Ruby version
+- has_many :items
 
-* System dependencies
+## items table
+| Column          | Type                    | Options                            |
+|-----------------|-------------------------|------------------------------------|
+| name            | string                  | null:false                         |
+| text            | text                    | null:false                         |
+| category        | string                  | null:false                         |
+| joutai          | string                  | null:false                         |
+| area            | string                  | null:false                         |
+| nanniti         | string                  | null:false                         |
+| price           | integer                 | null:false                         |
+| user_id         | reference               | null:false, foreign_key: true      |
 
-* Configuration
+### Asociation
 
-* Database creation
+- belongs_to :user
+- has_one :purchese_record
 
-* Database initialization
+## purchase_record table
+| Column           | Type                   | Options                             |
+|------------------|------------------------|-------------------------------------|
+| user_id          | reference              | null:false, foreign_key: true       |
+| item_id          | reference              | null:false, foreign_key: true       |
 
-* How to run the test suite
+### Asociation
 
-* Services (job queues, cache servers, search engines, etc.)
+belongs_to items
+belongs_to shipping_infomation
 
-* Deployment instructions
+## shipping_infomation
+| Column           | Type                   | Options                             |
+|------------------|------------------------|-------------------------------------|
+| post_number      | integer                | null:false                          |
+| prefecture       | string                 | null:false                          |
+| municipalitie    | string                 | null:false                          |
+| address_number   | integer                | null:false                          |
+| building_name    | string                 |                                     |
 
-* ...
+### Asociation
+
+belongs_to purchase_record
