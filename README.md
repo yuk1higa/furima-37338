@@ -14,21 +14,21 @@
 
 ### Asociation
 
-- has_many :item
-- has_one :purchese_record
+- has_many :items
+- has_many :purchese_records
 
 ## items table
 | Column          | Type                    | Options                            |
 |-----------------|-------------------------|------------------------------------|
 | name            | string                  | null:false                         |
 | text            | text                    | null:false                         |
-| category        | integer                 | null:false                         |
-| grade           | integer                 | null:false                         |
-| postage         | integer                 | null:false                         |
-| area            | integer                 | null:false                         |
-| Schedule        | integer                 | null:false                         |
+| category_id     | integer                 | null:false                         |
+| grade_id        | integer                 | null:false                         |
+| postage_id      | integer                 | null:false                         |
+| area_id         | integer                 | null:false                         |
+| schedule_id     | integer                 | null:false                         |
 | price           | integer                 | null:false                         |
-| user_id         | reference               | null:false, foreign_key: true      |
+| user            | reference               | null:false, foreign_key: true      |
 
 ### Asociation
 
@@ -38,12 +38,12 @@
 ## purchase_records table
 | Column           | Type                   | Options                             |
 |------------------|------------------------|-------------------------------------|
-| user_id          | reference              | null:false, foreign_key: true       |
-| item_id          | reference              | null:false, foreign_key: true       |
+| user             | reference              | null:false, foreign_key: true       |
+| item             | reference              | null:false, foreign_key: true       |
 
 ### Asociation
 
-belongs_to :items
+belongs_to :item
 belongs_to :user
 has_one :shipping_infomation
 
@@ -51,11 +51,11 @@ has_one :shipping_infomation
 | Column           | Type                   | Options                             |
 |------------------|------------------------|-------------------------------------|
 | post_number      | string                 | null:false                          |
-| area             | integer                | null:false                          |
+| area_id          | integer                | null:false                          |
 | municipalitie    | string                 | null:false                          |
 | address          | string                 | null:false                          |
 | building_name    | string                 |                                     |
-| phone_number     | integer                | null:false                          |
+| phone_number     | string                 | null:false                          |
 
 ### Asociation
 
