@@ -28,7 +28,7 @@
 | area_id         | integer                 | null:false                         |
 | schedule_id     | integer                 | null:false                         |
 | price           | integer                 | null:false                         |
-| user            | reference               | null:false, foreign_key: true      |
+| user            | references              | null:false, foreign_key: true      |
 
 ### Asociation
 
@@ -38,8 +38,8 @@
 ## purchase_records table
 | Column           | Type                   | Options                             |
 |------------------|------------------------|-------------------------------------|
-| user             | reference              | null:false, foreign_key: true       |
-| item             | reference              | null:false, foreign_key: true       |
+| user             | references             | null:false, foreign_key: true       |
+| item             | references             | null:false, foreign_key: true       |
 
 ### Asociation
 
@@ -47,7 +47,7 @@ belongs_to :item
 belongs_to :user
 has_one :shipping_infomation
 
-## shipping_infomations table
+## addresses table
 | Column           | Type                   | Options                             |
 |------------------|------------------------|-------------------------------------|
 | post_number      | string                 | null:false                          |
@@ -56,6 +56,7 @@ has_one :shipping_infomation
 | address          | string                 | null:false                          |
 | building_name    | string                 |                                     |
 | phone_number     | string                 | null:false                          |
+| purchase_record  | references             | null:false, foreign_key: true       |
 
 ### Asociation
 
