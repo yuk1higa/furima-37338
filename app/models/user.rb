@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         
+         VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,}\z/
+  validates :password, presence: true,
+            format: { with: VALID_PASSWORD_REGEX,
+             message: "passwordは半角英数字混合の入力が必要です"}
          validates :nickname, presence: :true 
          with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/,message: '全角文字を使用して下さい'} do
          validates :first_name 
