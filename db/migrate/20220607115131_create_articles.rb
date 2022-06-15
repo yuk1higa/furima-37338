@@ -3,13 +3,14 @@ class CreateArticles < ActiveRecord::Migration[6.0]
     create_table :articles do |t|
       t.string :name, null: false
       t.text :text, null:false
-      t.category_id :integer, null:false
-      t.grade_id :integer, null:false
-      t.postage_id :integer, null:false
-      t.area_id :integer, null:false
-      t.schedule_id :integer, null: false
-      t.price :integer, null: false
-      t.user :references, null:false, foreign_key: true
+      t.integer :category_id, null: false
+      t.integer :grade_id, null: false
+      t.integer :postage_id, null: false
+      t.integer :area_id, null: false
+      t.integer :schedule_id, null: false
+      t.integer :price, null: false
+      t.references :user, null: false, foreign_key: true
+
 
       t.timestamps
     end
