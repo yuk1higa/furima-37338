@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
       @item.area_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Area can't be blank",)
+      expect(@item.errors.full_messages).to include("Area can't be blank")
     end
     it '発送までの日数の情報が空では出品出来ない' do
       @item = FactoryBot.build(:item)
@@ -56,19 +56,19 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
       @item.price = '200'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price 半角数字で300円から9,999,999円の間で出品して下さい")
+      expect(@item.errors.full_messages).to include('Price 半角数字で300円から9,999,999円の間で出品して下さい')
     end
     it '価格が10,000,000円を超えると出品出来ない' do
       @item = FactoryBot.build(:item)
       @item.price = '10000000'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price 半角数字で300円から9,999,999円の間で出品して下さい")
+      expect(@item.errors.full_messages).to include('Price 半角数字で300円から9,999,999円の間で出品して下さい')
     end
     it '価格が半角数値でないと出品出来ない' do
       @item = FactoryBot.build(:item)
       @item.price = '２０００'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price 半角数字で300円から9,999,999円の間で出品して下さい")
+      expect(@item.errors.full_messages).to include('Price 半角数字で300円から9,999,999円の間で出品して下さい')
     end
     it '画像が添付されていないと出品出来ない' do
       @item = FactoryBot.build(:item)
