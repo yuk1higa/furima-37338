@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @item = Item.order('created_at DESC')
   end
@@ -23,3 +24,4 @@ class ItemsController < ApplicationController
                                  :image).merge(user_id: current_user.id)
   end
 end
+
