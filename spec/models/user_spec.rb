@@ -93,22 +93,22 @@ RSpec.describe User, type: :model do
       it '数字のみのパスワードでは登録出来ない' do
         @user.password = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password passwordは半角英数字混合の入力が必要です")
+        expect(@user.errors.full_messages).to include('Password passwordは半角英数字混合の入力が必要です')
       end
       it '全角文字を含むパスワードでは登録出来ない' do
         @user.password = '全角文字でパスワード'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password passwordは半角英数字混合の入力が必要です")
+        expect(@user.errors.full_messages).to include('Password passwordは半角英数字混合の入力が必要です')
       end
       it 'first_nameに半角文字が含まれていると登録出来ない ' do
         @user.first_name = 'tarou'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name 全角文字を使用して下さい")
+        expect(@user.errors.full_messages).to include('First name 全角文字を使用して下さい')
       end
       it 'kana_first_nameにカタカナ以外の文字(平仮名・漢字・英数字・記号)が含まれていると登録出来ない' do
         @user.kana_first_name = '太郎'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana first name 全角カタカナを使用して下さい")
+        expect(@user.errors.full_messages).to include('Kana first name 全角カタカナを使用して下さい')
       end
     end
   end
