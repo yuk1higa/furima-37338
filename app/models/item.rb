@@ -14,6 +14,6 @@ class Item < ApplicationRecord
                             message: '半角数字で300円から9,999,999円の間で出品して下さい' }
 
   belongs_to :user
-  #has_one :purchese_record
+  # has_one :purchese_record
   has_one_attached :image
 end
