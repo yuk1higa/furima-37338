@@ -1,4 +1,4 @@
-class PurcheseRecord
+class PurcheseForm
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :post_number, :area_id, :municipalitie, :address, :building_name, :phone_number,
 
@@ -14,7 +14,6 @@ class PurcheseRecord
 end
 
 def save
-  purchese_record = PurcheseRecord.create(user_id: user_id, item_id: item_id)
-  Address.create(post_number: post_number, area_id: area_id, municipalitie: municipalitie, address: address, building_name: building_name, phone_number: phone_number )
-  
+  purchese = Purchese_record.create(user_id: user_id, item_id: item_id)
+  Shipping_infomation.create(post_number: post_number, area_id: area_id, municipalitie: municipalitie, address: address, building_name: building_name, phone_number: phone_number )
 end
