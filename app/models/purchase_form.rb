@@ -1,6 +1,6 @@
 class PurchaseForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_number, :area_id, :municipalitie, :address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :post_number, :area_id, :municipalitie, :address, :building_name, :phone_number, :token
 
     with_options presence: true do
     validates :user_id
@@ -11,6 +11,7 @@ class PurchaseForm
     validates :address
     validates :building_name
     validates :phone_number, format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
+    validates :token
 end
 
 def save
