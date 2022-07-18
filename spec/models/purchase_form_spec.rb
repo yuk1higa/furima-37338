@@ -8,6 +8,7 @@ RSpec.describe PurchaseForm, type: :model do
   describe '購入者情報の保存' do
     context '購入者情報が保存できるとき' do
       it '必要な情報を入力していれば保存できる' do
+        @purchase_form.valid?
         expect(@purchase_form).to be_valid
       end
     end
@@ -52,8 +53,8 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Phone number can't be blank")
       end
-      it '電話番号が11桁未満だと保存できない' do
-        @purchase_form.phone_number = '1234567890'
+      it '電話番号が10桁未満だと保存できない' do
+        @purchase_form.phone_number = '123456789'
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
       end
