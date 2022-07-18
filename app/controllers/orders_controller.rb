@@ -1,13 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :purchase_item, only:[:index, :create]
 
 def index
-  @item = Item.find(params[:item_id])
+  
   @purchase_form = PurchaseForm.new
 end
 
 def create
-  @item = Item.find(params[:item_id])
+
   @purchase_form = PurchaseForm.new(order_params)
   if @purchase_form.valid?
     pay_item
@@ -32,4 +33,14 @@ def pay_item
       currency: 'jpy'
     )
   end
+
+  def purchase_item
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id 
+      redirect_to root_path
+    elsif @item.purchase_record.present?
+      redirect_to root_path
+    end
+  end
+
 end
