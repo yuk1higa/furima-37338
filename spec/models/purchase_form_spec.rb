@@ -12,7 +12,7 @@ RSpec.describe PurchaseForm, type: :model do
       it '必要な情報を入力していれば保存できる' do
         @purchase_form.valid?
         expect(@purchase_form).to be_valid
-      end
+      end 
     end
     context '購入者情報が保存できないとき' do
       it 'user_idが空だと保存できない' do
