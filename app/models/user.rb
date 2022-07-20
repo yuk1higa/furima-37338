@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :items
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)\w{6,}\z/
+  VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/ 
   validates :password,
             format: { with: VALID_PASSWORD_REGEX,
                       message: 'passwordは半角英数字混合の入力が必要です' }
